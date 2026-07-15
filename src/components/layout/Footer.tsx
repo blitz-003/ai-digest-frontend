@@ -1,62 +1,73 @@
 import Link from "next/link";
+
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+  FaXTwitter,
+} from "react-icons/fa6";
 
 
 export default function Footer() {
 
-
   return (
 
-    <footer className="
-      mt-20
-      border-t
-      bg-gradient-to-br
-      from-blue-50
-      via-purple-50
-      to-indigo-50
-    ">
+    <footer
+      className="
+        mt-24
+        border-t
+        bg-gradient-to-b
+        from-white
+        via-blue-50/40
+        to-purple-50/60
+      "
+    >
+
+      <div
+        className="
+          container
+          mx-auto
+          px-4
+          py-14
+        "
+      >
 
 
-      <div className="
-        container
-        mx-auto
-        px-4
-        py-12
-      ">
-
-
-        <div className="
-          grid
-          gap-10
-          md:grid-cols-4
-        ">
+        <div
+          className="
+            grid
+            gap-10
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
+        >
 
 
           {/* Brand */}
 
           <div>
 
-            <h2 className="
-              text-2xl
-              font-bold
-              tracking-tight
-            ">
+            <h2
+              className="
+                text-2xl
+                font-bold
+                tracking-tight
+              "
+            >
               AI Digest
             </h2>
 
 
-            <p className="
-              mt-3
-              text-sm
-              text-muted-foreground
-            ">
-              Stay updated with the latest
-              artificial intelligence news,
-              research, and tools.
+            <p
+              className="
+                mt-4
+                max-w-xs
+                text-sm
+                leading-6
+                text-muted-foreground
+              "
+            >
+              Your source for artificial intelligence
+              news, research, startups, and tools.
             </p>
 
 
@@ -65,42 +76,60 @@ export default function Footer() {
 
 
 
-          {/* Navigation */}
+
+          {/* Explore */}
 
           <div>
 
-            <h3 className="
-              font-semibold
-            ">
+            <h3
+              className="
+                text-sm
+                font-semibold
+              "
+            >
               Explore
             </h3>
 
 
-            <div className="
-              mt-4
-              flex
-              flex-col
-              gap-3
-              text-sm
-            ">
+            <div
+              className="
+                mt-4
+                flex
+                flex-col
+                gap-3
+                text-sm
+                text-muted-foreground
+              "
+            >
 
-
-              <Link href="/">
+              <Link
+                className="hover:text-primary transition"
+                href="/"
+              >
                 Home
               </Link>
 
 
-              <Link href="/articles">
+              <Link
+                className="hover:text-primary transition"
+                href="/articles"
+              >
                 Articles
               </Link>
 
 
-              <Link href="/about">
+              <Link
+                className="hover:text-primary transition"
+                href="/about"
+              >
                 About
               </Link>
 
 
-              <Link href="/pricing">
+              <Link
+                className="hover:text-primary transition"
+                href="/pricing"
+              >
                 Pricing
               </Link>
 
@@ -112,38 +141,53 @@ export default function Footer() {
 
 
 
-          {/* Resources */}
+
+          {/* Topics */}
 
           <div>
 
-            <h3 className="
-              font-semibold
-            ">
-              Resources
+            <h3
+              className="
+                text-sm
+                font-semibold
+              "
+            >
+              Topics
             </h3>
 
 
-            <div className="
-              mt-4
-              flex
-              flex-col
-              gap-3
-              text-sm
-            ">
+            <div
+              className="
+                mt-4
+                flex
+                flex-col
+                gap-3
+                text-sm
+                text-muted-foreground
+              "
+            >
 
-
-              <Link href="#">
-                AI Research
+              <Link
+                href="/articles?category=ai-startups"
+                className="hover:text-primary transition"
+              >
+                AI Startups
               </Link>
 
 
-              <Link href="#">
+              <Link
+                href="/articles?category=ai-tools"
+                className="hover:text-primary transition"
+              >
                 AI Tools
               </Link>
 
 
-              <Link href="#">
-                Community
+              <Link
+                href="/articles?category=research-papers"
+                className="hover:text-primary transition"
+              >
+                Research
               </Link>
 
 
@@ -160,46 +204,110 @@ export default function Footer() {
 
           <div>
 
-
-            <h3 className="
-              font-semibold
-            ">
-              Follow Us
+            <h3
+              className="
+                text-sm
+                font-semibold
+              "
+            >
+              Follow AI Digest
             </h3>
 
 
-            <div className="
-              mt-4
-              flex
-              gap-4
-            ">
+            <div
+              className="
+                mt-5
+                flex
+                gap-3
+              "
+            >
 
-
-              <FaGithub
+              <a
+                href="#"
                 className="
-                  h-5
-                  w-5
-                  cursor-pointer
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  bg-white
+                  shadow-sm
+                  transition
+                  hover:-translate-y-1
+                  hover:bg-blue-50
                 "
-              />
+              >
+
+                <FaGithub
+                  className="
+                    h-5
+                    w-5
+                  "
+                />
+
+              </a>
 
 
-              <FaTwitter
+
+
+              <a
+                href="#"
                 className="
-                  h-5
-                  w-5
-                  cursor-pointer
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  bg-white
+                  shadow-sm
+                  transition
+                  hover:-translate-y-1
+                  hover:bg-blue-50
                 "
-              />
+              >
+
+                <FaXTwitter
+                  className="
+                    h-5
+                    w-5
+                  "
+                />
+
+              </a>
 
 
-              <FaLinkedin
+
+
+              <a
+                href="#"
                 className="
-                  h-5
-                  w-5
-                  cursor-pointer
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  bg-white
+                  shadow-sm
+                  transition
+                  hover:-translate-y-1
+                  hover:bg-blue-50
                 "
-              />
+              >
+
+                <FaLinkedin
+                  className="
+                    h-5
+                    w-5
+                  "
+                />
+
+              </a>
 
 
             </div>
@@ -208,25 +316,38 @@ export default function Footer() {
           </div>
 
 
-
         </div>
 
 
 
 
 
-        <div className="
-          mt-10
-          border-t
-          pt-6
-          text-center
-          text-sm
-          text-muted-foreground
-        ">
+        <div
+          className="
+            mt-12
+            flex
+            flex-col
+            items-center
+            justify-between
+            gap-3
+            border-t
+            pt-6
+            text-sm
+            text-muted-foreground
+            md:flex-row
+          "
+        >
 
-          © {new Date().getFullYear()}
-          {" "}
-          AI Digest. All rights reserved.
+          <p>
+            © {new Date().getFullYear()} AI Digest.
+            All rights reserved.
+          </p>
+
+
+          <p>
+            Built for the future of AI.
+          </p>
+
 
         </div>
 
@@ -237,5 +358,4 @@ export default function Footer() {
     </footer>
 
   );
-
 }
