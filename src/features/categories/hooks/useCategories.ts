@@ -5,7 +5,7 @@ import {
 
 import {
   getCategories,
-} from "../services/category.service";
+} from "../services/categories.service";
 
 
 
