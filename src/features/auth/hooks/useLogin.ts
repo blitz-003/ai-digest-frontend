@@ -6,6 +6,8 @@ import {
 import { useRouter } from "next/navigation";
 
 import { login } from "../services/auth.service";
+import { toast } from "sonner";
+import axios from "axios";
 
 
 export const useLogin = () => {
@@ -18,39 +20,28 @@ const router = useRouter();
 
 
 return useMutation({
+  mutationFn: login,
 
-    mutationFn: login,
+  onSuccess: async () => {
+    await queryClient.refetchQueries({
+      queryKey: ["current-user"],
+    });
 
-
-    onSuccess: async () => {
-
-    console.log("Login successful");
-
-
-    try {
-
-        await queryClient.refetchQueries({
-            queryKey:["current-user"],
-        });
-
-
-        console.log("User fetched");
-
-
-    } catch(error){
-
-        console.log("User fetch failed", error);
-
-    }
-
-
-    console.log("Redirecting");
-
+    toast.success("Login successful");
 
     router.push("/");
+  },
 
-}
-
+  onError: (error) => {
+    if (axios.isAxiosError(error)) {
+      toast.error(
+        error.response?.data?.detail ||
+        "Invalid email or password"
+      );
+    } else {
+      toast.error("Something went wrong");
+    }
+  },
 });
 
 

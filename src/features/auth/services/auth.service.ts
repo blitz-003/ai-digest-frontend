@@ -6,9 +6,11 @@ import type {
   RegisterRequest,
   User,
   LoginResponse,
+  RegisterResponse,
 } from "../types/auth";
 
 import { LoginSchema } from "../validation/login.schema";
+import { RegisterSchema } from "../validation/register.schema";
 
 export const login = async (
   data: LoginSchema
@@ -22,8 +24,8 @@ export const login = async (
 };
 
 export const register = async (
-  data: RegisterRequest
-): Promise<AuthResponse> => {
+  data: RegisterSchema
+): Promise<RegisterResponse> => {
   const response = await api.post(
     API.AUTH.REGISTER,
     data
@@ -31,7 +33,6 @@ export const register = async (
 
   return response.data;
 };
-
 export const getCurrentUser = async (): Promise<User> => {
   const response = await api.get(
     API.AUTH.ME

@@ -32,3 +32,7 @@ export interface User {
 export interface LoginResponse {
   message: string;
 }
+
+export interface RegisterResponse {
+  message: string;
+}
