@@ -1,9 +1,10 @@
 export const API = {
-  AUTH: {
+AUTH: {
     LOGIN: "/auth/login",
     REGISTER: "/auth/register",
     ME: "/auth/me",
-  },
+    LOGOUT: "/auth/logout",
+},
 
   PROFILE: {
     ME: "/profile/me",
