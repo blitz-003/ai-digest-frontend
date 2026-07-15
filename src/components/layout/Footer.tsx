@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 
 
 export default function Footer() {
@@ -175,7 +175,7 @@ export default function Footer() {
             ">
 
 
-              <Github
+              <FaGithub
                 className="
                   h-5
                   w-5
@@ -184,7 +184,7 @@ export default function Footer() {
               />
 
 
-              <Twitter
+              <FaTwitter
                 className="
                   h-5
                   w-5
@@ -193,7 +193,7 @@ export default function Footer() {
               />
 
 
-              <Linkedin
+              <FaLinkedin
                 className="
                   h-5
                   w-5
