@@ -5,15 +5,30 @@ import { ReactNode } from "react";
 import { queryClient } from "@/lib/query-client";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
+import { AuthProvider } from "@/features/auth/context/AuthContext";
+
+
 interface ProvidersProps {
   children: ReactNode;
 }
 
+
 export default function Providers({ children }: ProvidersProps) {
+
   return (
+
     <QueryClientProvider client={queryClient}>
-      {children}
+
+      <AuthProvider>
+
+        {children}
+
+      </AuthProvider>
+
+
       <ReactQueryDevtools initialIsOpen={false} />
+
     </QueryClientProvider>
+
   );
 }

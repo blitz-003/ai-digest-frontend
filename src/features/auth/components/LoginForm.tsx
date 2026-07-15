@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 
 export default function LoginForm() {
-  const router = useRouter();
+ 
   const mutation = useLogin();
 
   const {
@@ -38,8 +38,8 @@ const onSubmit = async (values: LoginSchema) => {
   try {
     await mutation.mutateAsync(values);
 
-    router.push("/");
-    router.refresh();
+    // router.push("/");
+    // router.refresh();
   } catch (error) {
     console.error(error);
   }
