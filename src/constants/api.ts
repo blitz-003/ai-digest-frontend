@@ -14,6 +14,7 @@ AUTH: {
   ARTICLES: {
     LIST: "/articles",
     DETAIL: (id: string) => `/articles/${id}`,
+    CREATE: "/articles"
   },
 
   CATEGORIES: {
