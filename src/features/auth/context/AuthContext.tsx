@@ -1,88 +1,48 @@
 "use client";
 
-import {
-    createContext,
-    useContext,
-    ReactNode
-} from "react";
+import { createContext, useContext, ReactNode } from "react";
 
 import { useCurrentUser } from "../hooks/useCurrentUser";
 
 import { User } from "../types/auth";
 
-
 interface AuthContextType {
+  user: User | null;
 
-    user: User | null;
+  isLoading: boolean;
 
-    isLoading:boolean;
+  isAuthenticated: boolean;
 
-    isAuthenticated:boolean;
-
-    isError:boolean;
-
+  isError: boolean;
 }
 
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AuthContext =
-createContext<AuthContextType | undefined>(undefined);
+export function AuthProvider({ children }: { children: ReactNode }) {
+  console.log("AuthProvider rendered");
 
+  const { data: user, isLoading, isError } = useCurrentUser();
 
-
-export function AuthProvider({
-    children
-}:{
-    children:ReactNode
-}){
-
-
-const {
-    data:user,
-    isLoading,
-    isError
-
-} = useCurrentUser();
-
-
-
-    return (
-
-<AuthContext.Provider
-
-value={{
-    user:user ?? null,
-    isLoading,
-    isAuthenticated:!!user,
-    isError
-}}
-
->
-
-            {children}
-
-        </AuthContext.Provider>
-
-    );
-
+  return (
+    <AuthContext.Provider
+      value={{
+        user: user ?? null,
+        isLoading,
+        isAuthenticated: !!user,
+        isError,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
+export function useAuth() {
+  const context = useContext(AuthContext);
 
+  if (!context) {
+    throw new Error("useAuth must be used inside AuthProvider");
+  }
 
-export function useAuth(){
-
-    const context =
-        useContext(AuthContext);
-
-
-    if(!context){
-
-        throw new Error(
-            "useAuth must be used inside AuthProvider"
-        );
-
-    }
-
-
-    return context;
-
+  return context;
 }

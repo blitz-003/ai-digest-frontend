@@ -8,9 +8,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 
-
-
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "AI Digest",
@@ -21,30 +19,17 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({
-  children,
-}: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={cn("font-sans", inter.variable)}>
       <body>
-
         <Providers>
-
           <Navbar />
 
-          <main>
-
-            {children}
-
-          </main>
-          <Footer/>
-                  <Toaster
-          position="top-center"
-          richColors
-          closeButton
-        />
+          <main>{children}</main>
+          <Footer />
+          <Toaster position="top-center" richColors closeButton />
         </Providers>
-
       </body>
     </html>
   );
