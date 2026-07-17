@@ -11,15 +11,9 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Button } from "@/components/ui/button";
-
 
 const features = [
   {
@@ -42,7 +36,6 @@ const features = [
   },
 ];
 
-
 const categories = [
   "Artificial Intelligence",
   "Machine Learning",
@@ -51,7 +44,6 @@ const categories = [
   "Robotics",
   "AI Tools",
 ];
-
 
 const stats = [
   {
@@ -72,13 +64,7 @@ const stats = [
   },
 ];
 
-
-const audiences = [
-  "Developers",
-  "Researchers",
-  "Startup Founders",
-];
-
+const audiences = ["Developers", "Researchers", "Startup Founders"];
 
 const testimonials = [
   {
@@ -93,11 +79,9 @@ const testimonials = [
   },
 ];
 
-
 export default function HomePage() {
   return (
     <main>
-
       {/* HERO */}
       <section
         className="
@@ -109,7 +93,6 @@ export default function HomePage() {
         items-center
         "
       >
-
         {/* AI SaaS background glow */}
 
         <div
@@ -126,7 +109,6 @@ export default function HomePage() {
           "
         />
 
-
         <div
           className="
           pointer-events-none
@@ -140,7 +122,6 @@ export default function HomePage() {
           blur-3xl
           "
         />
-
 
         <div
           className="
@@ -156,7 +137,6 @@ export default function HomePage() {
           "
         />
 
-
         {/* grid */}
 
         <div
@@ -168,7 +148,6 @@ export default function HomePage() {
           "
         />
 
-
         <div
           className="
           relative
@@ -179,14 +158,12 @@ export default function HomePage() {
           text-center
           "
         >
-
           <div
             className="
             mx-auto
             max-w-4xl
             "
           >
-
             <h1
               className="
               text-5xl
@@ -200,7 +177,6 @@ export default function HomePage() {
               Stay Ahead of Innovation.
             </h1>
 
-
             <p
               className="
               mx-auto
@@ -210,11 +186,9 @@ export default function HomePage() {
               text-muted-foreground
               "
             >
-              AI Digest brings you curated AI news,
-              research explanations, and practical AI tools
-              in one modern knowledge platform.
+              AI Digest brings you curated AI news, research explanations, and
+              practical AI tools in one modern knowledge platform.
             </p>
-
 
             <div
               className="
@@ -224,46 +198,27 @@ export default function HomePage() {
               gap-4
               "
             >
-
               <Button size="lg">
-                <Link href="/register">
-                  Start Reading
-                </Link>
+                <Link href="/register">Start Reading</Link>
               </Button>
 
-
-              <Button
-                size="lg"
-                variant="outline"
-              >
-                <Link href="/articles">
-                  Explore Articles
-                </Link>
+              <Button size="lg" variant="outline">
+                <Link href="/articles">Explore Articles</Link>
               </Button>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* FEATURES */}
 
       <section className="container mx-auto px-4 py-24">
-
         <h2 className="text-center text-4xl font-bold">
           Everything AI In One Place
         </h2>
 
-
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-
           {features.map((feature) => {
-
             const Icon = feature.icon;
 
             return (
@@ -271,9 +226,7 @@ export default function HomePage() {
                 key={feature.title}
                 className="transition hover:-translate-y-1"
               >
-
                 <CardHeader>
-
                   <Icon
                     className="
                     h-8
@@ -282,44 +235,24 @@ export default function HomePage() {
                     "
                   />
 
-                  <CardTitle>
-                    {feature.title}
-                  </CardTitle>
-
+                  <CardTitle>{feature.title}</CardTitle>
                 </CardHeader>
 
-
-                <CardContent>
-                  {feature.description}
-                </CardContent>
-
-
+                <CardContent>{feature.description}</CardContent>
               </Card>
             );
-
           })}
-
         </div>
-
       </section>
-
-
 
       {/* CATEGORIES */}
 
       <section className="border-y bg-slate-50 py-20">
-
         <div className="container mx-auto px-4">
-
-          <h2 className="text-3xl font-bold">
-            Explore AI Categories
-          </h2>
-
+          <h2 className="text-3xl font-bold">Explore AI Categories</h2>
 
           <div className="mt-8 flex flex-wrap gap-3">
-
             {categories.map((category) => (
-
               <div
                 key={category}
                 className="
@@ -334,68 +267,39 @@ export default function HomePage() {
               >
                 {category}
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* STATISTICS */}
 
       <section className="container mx-auto px-4 py-24">
-
         <div className="grid gap-6 md:grid-cols-4">
-
-          {stats.map((stat)=>(
-
+          {stats.map((stat) => (
             <Card key={stat.label}>
-
               <CardContent className="pt-8 text-center">
+                <h3 className="text-4xl font-bold">{stat.value}</h3>
 
-                <h3 className="text-4xl font-bold">
-                  {stat.value}
-                </h3>
-
-                <p className="mt-2 text-muted-foreground">
-                  {stat.label}
-                </p>
-
+                <p className="mt-2 text-muted-foreground">{stat.label}</p>
               </CardContent>
-
             </Card>
-
           ))}
-
         </div>
-
       </section>
-
-
 
       {/* SERVICES */}
 
       <section className="bg-slate-50 py-24">
-
         <div className="container mx-auto px-4">
-
           <h2 className="text-4xl font-bold">
             Built For Everyone Exploring AI
           </h2>
 
-
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-
-            {audiences.map((item)=>(
-
+            {audiences.map((item) => (
               <Card key={item}>
-
                 <CardContent className="pt-8">
-
                   <Users
                     className="
                     mb-4
@@ -405,66 +309,39 @@ export default function HomePage() {
                     "
                   />
 
-
-                  <h3 className="font-bold">
-                    {item}
-                  </h3>
-
+                  <h3 className="font-bold">{item}</h3>
 
                   <p className="mt-2 text-sm text-muted-foreground">
                     Access AI knowledge designed for your workflow.
                   </p>
-
                 </CardContent>
-
               </Card>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* WHY AI DIGEST */}
 
       <section className="container mx-auto px-4 py-24">
-
         <div className="grid gap-10 md:grid-cols-2">
-
           <div>
-
-            <h2 className="text-4xl font-bold">
-              Why AI Digest?
-            </h2>
-
+            <h2 className="text-4xl font-bold">Why AI Digest?</h2>
 
             <p className="mt-5 text-muted-foreground">
-              We combine AI news, research,
-              and practical tools into one
-              clean knowledge platform.
+              We combine AI news, research, and practical tools into one clean
+              knowledge platform.
             </p>
-
           </div>
 
-
           <div className="space-y-4">
-
             {[
               "Curated AI information",
               "Developer focused content",
               "Startup and tool discovery",
               "Research summaries",
-            ].map(item=>(
-
-              <div
-                key={item}
-                className="flex items-center gap-3"
-              >
-
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3">
                 <CheckCircle
                   className="
                   h-5
@@ -474,65 +351,35 @@ export default function HomePage() {
                 />
 
                 {item}
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* TESTIMONIALS */}
 
       <section className="border-y bg-slate-50 py-24">
-
         <div className="container mx-auto px-4">
-
-          <h2 className="text-4xl font-bold">
-            What Readers Say
-          </h2>
-
+          <h2 className="text-4xl font-bold">What Readers Say</h2>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-
-            {testimonials.map(item=>(
-
+            {testimonials.map((item) => (
               <Card key={item.role}>
-
                 <CardContent className="pt-8">
+                  <p>{item.quote}</p>
 
-                  <p>
-                    "{item.quote}"
-                  </p>
-
-
-                  <p className="mt-5 font-semibold">
-                    {item.role}
-                  </p>
-
+                  <p className="mt-5 font-semibold">{item.role}</p>
                 </CardContent>
-
               </Card>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* CTA */}
 
       <section className="container mx-auto px-4 py-24">
-
         <div
           className="
           rounded-3xl
@@ -543,7 +390,6 @@ export default function HomePage() {
           text-white
           "
         >
-
           <Rocket
             className="
             mx-auto
@@ -552,16 +398,11 @@ export default function HomePage() {
             "
           />
 
-
-          <h2 className="mt-5 text-4xl font-bold">
-            Start Your AI Journey
-          </h2>
-
+          <h2 className="mt-5 text-4xl font-bold">Start Your AI Journey</h2>
 
           <p className="mt-4 text-white/70">
             Join AI Digest and stay ahead of the AI revolution.
           </p>
-
 
           <Button
             className="
@@ -571,19 +412,10 @@ export default function HomePage() {
             hover:bg-white/90
             "
           >
-
-            <Link href="/register">
-              Get Started
-            </Link>
-
+            <Link href="/register">Get Started</Link>
           </Button>
-
-
         </div>
-
       </section>
-
-
     </main>
   );
 }
