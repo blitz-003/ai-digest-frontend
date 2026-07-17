@@ -14,15 +14,15 @@ export const useCreateArticle = () => {
   return useMutation({
     mutationFn: createArticle,
 
-    onSuccess: () => {
-    queryClient.invalidateQueries({
-      queryKey: ["articles"],
-    });
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["articles"],
+      });
 
-    toast.success("Article published!");
+      toast.success("Article published!");
 
-    router.push("/articles");
-  },
+      router.push("/articles");
+    },
 
     onError: (error) => {
       if (axios.isAxiosError(error)) {
@@ -31,10 +31,7 @@ export const useCreateArticle = () => {
         if (typeof detail === "string") {
           toast.error(detail);
         } else if (Array.isArray(detail)) {
-          toast.error(
-            detail[0]?.msg ??
-              "Failed to publish article"
-          );
+          toast.error(detail[0]?.msg ?? "Failed to publish article");
         } else {
           toast.error("Failed to publish article");
         }
