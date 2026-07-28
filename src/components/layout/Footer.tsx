@@ -3,15 +3,13 @@ import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t bg-gradient-to-b from-white via-gray-50/50 to-white">
+    <footer className="border-t bg-gradient-to-b from-white via-gray-50/50 to-white">
       <div className="container mx-auto px-4 py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
-              <span className="text-[#C084FC]">
-                AI Digest
-              </span>
+              <span className="text-[#C084FC]">AI Digest</span>
             </h2>
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
               Your source for artificial intelligence news, research, startups,
@@ -32,10 +30,7 @@ export default function Footer() {
               >
                 Articles
               </Link>
-              <Link
-                className="transition hover:text-foreground"
-                href="/about"
-              >
+              <Link className="transition hover:text-foreground" href="/about">
                 About
               </Link>
               <Link
@@ -99,7 +94,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t pt-6 text-sm text-muted-foreground md:flex-row">
-          <p>&copy; {new Date().getFullYear()} AI Digest. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} AI Digest. All rights reserved.
+          </p>
           <p>Built for the future of AI.</p>
         </div>
       </div>

@@ -4,14 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  User,
-  ArrowRight,
-} from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from "lucide-react";
 
 import {
   registerSchema,
@@ -49,7 +42,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-4 py-12">
       {/* Background glows */}
       <div className="pointer-events-none absolute left-[-10%] top-[-20%] h-[500px] w-[500px] rounded-full bg-[#34D399]/15 blur-[120px]" />
       <div className="pointer-events-none absolute right-[-10%] bottom-[-10%] h-[400px] w-[400px] rounded-full bg-[#4F8CFF]/15 blur-[120px]" />
@@ -57,11 +50,8 @@ export default function RegisterForm() {
       <div className="relative w-full max-w-md">
         {/* Title outside the card */}
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Create Your{" "}
-            <span className="text-[#6EE7B7]">
-              Account
-            </span>
+          <h1 className="text-4xl font-bold">
+            Create Your <span className="text-[#6EE7B7]">Account</span>
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">
             Join AI Digest and explore AI knowledge

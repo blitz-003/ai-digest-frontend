@@ -9,7 +9,6 @@ import { useLogout } from "@/features/auth/hooks/useLogout";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +26,7 @@ const privateLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user, isAuthenticated, isLoading } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const logoutMutation = useLogout();
   const initials = user?.email?.charAt(0).toUpperCase() ?? "";
 
@@ -57,12 +56,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {isLoading ? (
-            <>
-              <Skeleton className="h-9 w-20" />
-              <Skeleton className="h-9 w-24" />
-            </>
-          ) : isAuthenticated ? (
+          {isAuthenticated ? (
             <div className="flex items-center gap-4">
               <Avatar>
                 <AvatarFallback>{initials}</AvatarFallback>
@@ -123,9 +117,7 @@ export default function Navbar() {
             </nav>
 
             <div className="border-t pt-5">
-              {isLoading ? (
-                <Skeleton className="h-10 w-full" />
-              ) : isAuthenticated ? (
+              {isAuthenticated ? (
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
                     <Avatar>
