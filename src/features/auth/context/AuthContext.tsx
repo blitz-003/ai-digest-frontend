@@ -1,26 +1,19 @@
 "use client";
 
 import { createContext, useContext, ReactNode } from "react";
-
 import { useCurrentUser } from "../hooks/useCurrentUser";
-
 import { User } from "../types/auth";
 
 interface AuthContextType {
   user: User | null;
-
   isLoading: boolean;
-
   isAuthenticated: boolean;
-
   isError: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  console.log("AuthProvider rendered");
-
   const { data: user, isLoading, isError } = useCurrentUser();
 
   return (

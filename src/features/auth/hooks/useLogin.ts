@@ -1,15 +1,15 @@
+"use client";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-import { useRouter } from "next/navigation";
-
+import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "../services/auth.service";
 import { toast } from "sonner";
 import axios from "axios";
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   return useMutation({
     mutationFn: login,
@@ -21,7 +21,9 @@ export const useLogin = () => {
 
       toast.success("Login successful");
 
-      router.push("/");
+      const returnTo = searchParams.get("returnTo");
+      router.push(returnTo || "/");
+      router.refresh();
     },
 
     onError: (error) => {

@@ -1,337 +1,150 @@
 "use client";
 
-
+import { Editor } from "@tiptap/react";
 import {
- Editor
-} from "@tiptap/react";
-
-
-import {
- Button
-} from "@/components/ui/button";
-
-
+  Bold,
+  Italic,
+  Heading1,
+  Heading2,
+  List,
+  ListOrdered,
+  Quote,
+  Code,
+  Undo,
+  Redo,
+  Minus,
+  Strikethrough,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
-
- editor:Editor;
-
+  editor: Editor;
 }
 
-
-
-export default function EditorToolbar({
- editor
-}:Props){
-
-
-return (
-
-<div
-className="
-flex
-flex-wrap
-gap-2
-border-b
-p-3
-"
->
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleBold()
-.run()
-
-
-}
-
->
-
-Bold
-
-</Button>
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleItalic()
-.run()
-
-
-}
-
->
-
-Italic
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleHeading({
-level:1
-})
-.run()
-
-
-}
-
->
-
-H1
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleHeading({
-level:2
-})
-.run()
-
-
-}
-
->
-
-H2
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleBulletList()
-.run()
-
-
-}
-
->
-
-Bullet
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleOrderedList()
-.run()
-
-
-}
-
->
-
-Number
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleBlockquote()
-.run()
-
-
-}
-
->
-
-Quote
-
-</Button>
-
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.toggleCodeBlock()
-.run()
-
-
-}
-
->
-
-Code
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.undo()
-.run()
-
-
-}
-
->
-
-Undo
-
-</Button>
-
-
-
-
-
-<Button
-
-type="button"
-
-variant="outline"
-
-size="sm"
-
-onClick={()=>
-
-
-editor.chain()
-.focus()
-.redo()
-.run()
-
-
-}
-
->
-
-Redo
-
-</Button>
-
-
-
-</div>
-
+const ToolButton = ({
+  onClick,
+  isActive = false,
+  disabled = false,
+  children,
+}: {
+  onClick: () => void;
+  isActive?: boolean;
+  disabled?: boolean;
+  children: React.ReactNode;
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    disabled={disabled}
+    className={cn(
+      "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+      isActive
+        ? "bg-[#4F8CFF]/10 text-[#4F8CFF]"
+        : "text-muted-foreground hover:bg-gray-100 hover:text-foreground",
+      disabled && "cursor-not-allowed opacity-40",
+    )}
+  >
+    {children}
+  </button>
 );
 
+export default function EditorToolbar({ editor }: Props) {
+  return (
+    <div className="flex flex-wrap items-center gap-1 border-b border-gray-100 px-4 py-2">
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        isActive={editor.isActive("bold")}
+      >
+        <Bold className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        isActive={editor.isActive("italic")}
+      >
+        <Italic className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+        isActive={editor.isActive("strike")}
+      >
+        <Strikethrough className="h-4 w-4" />
+      </ToolButton>
+
+      <div className="mx-1 h-5 w-px bg-gray-200" />
+
+      <ToolButton
+        onClick={() =>
+          editor.chain().focus().toggleHeading({ level: 1 }).run()
+        }
+        isActive={editor.isActive("heading", { level: 1 })}
+      >
+        <Heading1 className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() =>
+          editor.chain().focus().toggleHeading({ level: 2 }).run()
+        }
+        isActive={editor.isActive("heading", { level: 2 })}
+      >
+        <Heading2 className="h-4 w-4" />
+      </ToolButton>
+
+      <div className="mx-1 h-5 w-px bg-gray-200" />
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        isActive={editor.isActive("bulletList")}
+      >
+        <List className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleOrderedList().run()}
+        isActive={editor.isActive("orderedList")}
+      >
+        <ListOrdered className="h-4 w-4" />
+      </ToolButton>
+
+      <div className="mx-1 h-5 w-px bg-gray-200" />
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        isActive={editor.isActive("blockquote")}
+      >
+        <Quote className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        isActive={editor.isActive("codeBlock")}
+      >
+        <Code className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().setHorizontalRule().run()}
+      >
+        <Minus className="h-4 w-4" />
+      </ToolButton>
+
+      <div className="mx-1 h-5 w-px bg-gray-200" />
+
+      <ToolButton
+        onClick={() => editor.chain().focus().undo().run()}
+        disabled={!editor.can().undo()}
+      >
+        <Undo className="h-4 w-4" />
+      </ToolButton>
+
+      <ToolButton
+        onClick={() => editor.chain().focus().redo().run()}
+        disabled={!editor.can().redo()}
+      >
+        <Redo className="h-4 w-4" />
+      </ToolButton>
+    </div>
+  );
 }

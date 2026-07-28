@@ -14,43 +14,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 const publicLinks = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Articles",
-    href: "/articles",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Pricing",
-    href: "/pricing",
-  },
+  { name: "Home", href: "/" },
+  { name: "Articles", href: "/articles" },
+  { name: "About", href: "/about" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 const privateLinks = [
-  {
-    name: "Write",
-    href: "/write",
-  },
-  {
-    name: "Dashboard",
-    href: "/dashboard",
-  },
+  { name: "Write", href: "/write" },
+  { name: "Dashboard", href: "/dashboard" },
 ];
 
 export default function Navbar() {
-  console.log("Navbar mounted");
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const { user, isAuthenticated, isLoading } = useAuth();
-
   const logoutMutation = useLogout();
-
   const initials = user?.email?.charAt(0).toUpperCase() ?? "";
 
   const navLinks = isAuthenticated
@@ -58,27 +36,26 @@ export default function Navbar() {
     : publicLinks;
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-tight">
-          AI Digest
+          <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+            AI Digest
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition hover:text-primary"
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               {link.name}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop Actions */}
         <div className="hidden items-center gap-3 md:flex">
           {isLoading ? (
             <>
@@ -90,7 +67,6 @@ export default function Navbar() {
               <Avatar>
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
-
               <Button
                 variant="destructive"
                 size="sm"
@@ -104,14 +80,11 @@ export default function Navbar() {
               <Link
                 href="/login"
                 className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
+                  buttonVariants({ variant: "ghost" }),
                 )}
               >
                 Login
               </Link>
-
               <Link href="/register" className={cn(buttonVariants())}>
                 Register
               </Link>
@@ -119,7 +92,6 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Toggle */}
         <Button
           variant="ghost"
           size="icon"
@@ -134,7 +106,6 @@ export default function Navbar() {
         </Button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="border-t md:hidden">
           <div className="container mx-auto flex flex-col gap-6 px-4 py-6">
@@ -160,12 +131,10 @@ export default function Navbar() {
                     <Avatar>
                       <AvatarFallback>{initials}</AvatarFallback>
                     </Avatar>
-
                     <span className="text-sm text-muted-foreground">
                       {user?.email}
                     </span>
                   </div>
-
                   <Button
                     variant="destructive"
                     onClick={() => logoutMutation.mutate()}
@@ -179,15 +148,12 @@ export default function Navbar() {
                     href="/login"
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      buttonVariants({
-                        variant: "outline",
-                      }),
+                      buttonVariants({ variant: "outline" }),
                       "w-full",
                     )}
                   >
                     Login
                   </Link>
-
                   <Link
                     href="/register"
                     onClick={() => setMobileOpen(false)}
