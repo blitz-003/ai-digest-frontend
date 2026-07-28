@@ -214,7 +214,7 @@ export default function HomePage() {
             >
               Understand AI.
               <br />
-              <span className="bg-gradient-to-r from-[#4F8CFF] via-[#34D399] to-[#A855F7] bg-clip-text text-transparent">
+              <span className="text-[#7DAAFF]">
                 Stay Ahead.
               </span>
             </motion.h1>
@@ -263,7 +263,7 @@ export default function HomePage() {
               className="text-4xl font-bold md:text-5xl"
             >
               Everything AI In{" "}
-              <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+              <span className="text-[#C084FC]">
                 One Place
               </span>
             </motion.h2>
@@ -340,7 +340,7 @@ export default function HomePage() {
             <ParallaxSection speed={0.1} className="order-2 lg:order-1">
               <h2 className="text-4xl font-bold md:text-5xl">
                 Trusted by{" "}
-                <span className="bg-gradient-to-r from-[#34D399] to-[#4F8CFF] bg-clip-text text-transparent">
+                <span className="text-[#6EE7B7]">
                   Thousands
                 </span>
               </h2>
@@ -397,7 +397,7 @@ export default function HomePage() {
               <div className="sticky top-32">
                 <h2 className="text-4xl font-bold md:text-5xl">
                   Built For Everyone{" "}
-                  <span className="bg-gradient-to-r from-[#A855F7] to-[#4F8CFF] bg-clip-text text-transparent">
+                  <span className="text-[#7DAAFF]">
                     Exploring AI
                   </span>
                 </h2>
@@ -441,7 +441,7 @@ export default function HomePage() {
               <div>
                 <h2 className="text-4xl font-bold md:text-5xl">
                   Why{" "}
-                  <span className="bg-gradient-to-r from-[#4F8CFF] to-[#34D399] bg-clip-text text-transparent">
+                  <span className="text-[#6EE7B7]">
                     AI Digest
                   </span>
                   ?

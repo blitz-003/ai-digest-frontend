@@ -114,7 +114,7 @@ export default function PricingPage() {
             className="text-5xl font-bold tracking-tight md:text-7xl"
           >
             Invest in Your{" "}
-            <span className="bg-gradient-to-r from-[#4F8CFF] via-[#34D399] to-[#A855F7] bg-clip-text text-transparent">
+            <span className="text-[#C084FC]">
               AI Knowledge
             </span>
           </motion.h1>
@@ -213,7 +213,7 @@ export default function PricingPage() {
               className="text-4xl font-bold md:text-5xl"
             >
               Frequently Asked{" "}
-              <span className="bg-gradient-to-r from-[#4F8CFF] to-[#34D399] bg-clip-text text-transparent">
+              <span className="text-[#6EE7B7]">
                 Questions
               </span>
             </motion.h2>

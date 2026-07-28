@@ -59,7 +59,7 @@ export default function RegisterForm() {
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
             Create Your{" "}
-            <span className="bg-gradient-to-r from-[#34D399] to-[#4F8CFF] bg-clip-text text-transparent">
+            <span className="text-[#6EE7B7]">
               Account
             </span>
           </h1>

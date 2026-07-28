@@ -18,7 +18,7 @@ export default function NotFound() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-8xl font-bold md:text-9xl">
-            <span className="bg-gradient-to-r from-[#4F8CFF] via-[#34D399] to-[#A855F7] bg-clip-text text-transparent">
+            <span className="text-[#7DAAFF]">
               404
             </span>
           </h1>

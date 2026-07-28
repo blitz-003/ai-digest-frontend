@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+              <span className="text-[#C084FC]">
                 AI Digest
               </span>
             </h2>

@@ -101,7 +101,7 @@ export default function AboutPage() {
             className="text-5xl font-bold tracking-tight md:text-7xl"
           >
             About{" "}
-            <span className="bg-gradient-to-r from-[#4F8CFF] via-[#34D399] to-[#A855F7] bg-clip-text text-transparent">
+            <span className="text-[#7DAAFF]">
               AI Digest
             </span>
           </motion.h1>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             >
               <h2 className="text-4xl font-bold md:text-5xl">
                 Our{" "}
-                <span className="bg-gradient-to-r from-[#4F8CFF] to-[#34D399] bg-clip-text text-transparent">
+                <span className="text-[#C084FC]">
                   Mission
                 </span>
               </h2>
@@ -196,7 +196,7 @@ export default function AboutPage() {
               className="text-4xl font-bold md:text-5xl"
             >
               What We{" "}
-              <span className="bg-gradient-to-r from-[#A855F7] to-[#4F8CFF] bg-clip-text text-transparent">
+              <span className="text-[#6EE7B7]">
                 Believe
               </span>
             </motion.h2>
@@ -254,7 +254,7 @@ export default function AboutPage() {
               className="text-4xl font-bold md:text-5xl"
             >
               Our{" "}
-              <span className="bg-gradient-to-r from-[#34D399] to-[#A855F7] bg-clip-text text-transparent">
+              <span className="text-[#7DAAFF]">
                 Journey
               </span>
             </motion.h2>

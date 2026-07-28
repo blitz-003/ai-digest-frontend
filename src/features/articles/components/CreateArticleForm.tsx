@@ -21,6 +21,7 @@ import ArticleEditor from "./ArticleEditor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function CreateArticleForm() {
   const mutation = useCreateArticle();
@@ -86,7 +87,7 @@ export default function CreateArticleForm() {
           </div>
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
             Write an{" "}
-            <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+            <span className="text-[#7DAAFF]">
               Article
             </span>
           </h1>
@@ -102,13 +103,14 @@ export default function CreateArticleForm() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-            {/* Title — large Medium-style input */}
+            {/* Title */}
             <div className="space-y-2">
-              <input
+              <Label htmlFor="title" className="text-base font-semibold">Title</Label>
+              <Input
                 id="title"
-                placeholder="Article title..."
+                placeholder="Enter article title..."
+                className="h-12 text-lg"
                 {...register("title")}
-                className="w-full border-0 bg-transparent text-4xl font-bold tracking-tight outline-none placeholder:text-gray-300 md:text-5xl"
               />
               {errors.title && (
                 <p className="text-sm text-red-500">{errors.title.message}</p>
@@ -117,12 +119,13 @@ export default function CreateArticleForm() {
 
             {/* Summary */}
             <div className="space-y-2">
-              <textarea
+              <Label htmlFor="summary" className="text-base font-semibold">Summary</Label>
+              <Textarea
                 id="summary"
                 rows={3}
                 placeholder="Write a short summary..."
+                className="resize-none text-base"
                 {...register("summary")}
-                className="w-full resize-none border-0 bg-transparent text-lg text-muted-foreground outline-none placeholder:text-gray-300"
               />
               {errors.summary && (
                 <p className="text-sm text-red-500">

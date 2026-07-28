@@ -48,7 +48,7 @@ export default function LoginForm() {
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
             Welcome{" "}
-            <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+            <span className="text-[#C084FC]">
               Back
             </span>
           </h1>

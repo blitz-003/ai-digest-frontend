@@ -39,7 +39,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-2xl font-bold tracking-tight">
-          <span className="bg-gradient-to-r from-[#4F8CFF] to-[#A855F7] bg-clip-text text-transparent">
+          <span className="text-[#7DAAFF]">
             AI Digest
           </span>
         </Link>
