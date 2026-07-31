@@ -35,12 +35,13 @@ export default function Navbar() {
     : publicLinks;
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-hairline bg-canvas/85 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-2xl font-bold tracking-tight">
-          <span className="text-[#7DAAFF]">
-            AI Digest
-          </span>
+        <Link
+          href="/"
+          className="text-xl font-medium tracking-tight text-primary"
+        >
+          AI Digest
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -48,7 +49,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
+              className="text-sm font-medium text-body transition hover:text-ink"
             >
               {link.name}
             </Link>
@@ -62,7 +63,7 @@ export default function Navbar() {
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
               <Button
-                variant="destructive"
+                variant="outline"
                 size="sm"
                 onClick={() => logoutMutation.mutate()}
               >
@@ -75,6 +76,7 @@ export default function Navbar() {
                 href="/login"
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
+                  "text-body hover:text-ink",
                 )}
               >
                 Login
@@ -101,7 +103,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t md:hidden">
+        <div className="border-t border-hairline md:hidden">
           <div className="container mx-auto flex flex-col gap-6 px-4 py-6">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -109,14 +111,14 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-base font-medium"
+                  className="text-base font-medium text-ink"
                 >
                   {link.name}
                 </Link>
               ))}
             </nav>
 
-            <div className="border-t pt-5">
+            <div className="border-t border-hairline pt-5">
               {isAuthenticated ? (
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
@@ -128,7 +130,7 @@ export default function Navbar() {
                     </span>
                   </div>
                   <Button
-                    variant="destructive"
+                    variant="outline"
                     onClick={() => logoutMutation.mutate()}
                   >
                     Logout

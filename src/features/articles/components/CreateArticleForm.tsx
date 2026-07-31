@@ -49,7 +49,9 @@ export default function CreateArticleForm() {
   const content = watch("content");
 
   const onSubmit = (data: CreateArticleSchema) => {
-    mutation.mutate(data, {
+    mutation.mutate(
+      { ...data, status: "published" },
+      {
       onError(error) {
         if (axios.isAxiosError(error)) {
           const detail = error.response?.data?.detail;
@@ -67,13 +69,8 @@ export default function CreateArticleForm() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-white">
-      {/* Background glows */}
-      <div className="pointer-events-none absolute left-[-200px] top-[-200px] h-[500px] w-[500px] rounded-full bg-[#4F8CFF]/15 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-[#34D399]/12 blur-[120px]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-[#A855F7]/10 blur-[120px]" />
-
-      <div className="relative container mx-auto max-w-4xl px-4 py-16">
+    <main className="min-h-screen overflow-x-clip bg-canvas">
+      <div className="container mx-auto min-w-0 max-w-4xl px-4 py-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,18 +78,14 @@ export default function CreateArticleForm() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#4F8CFF]/20 bg-[#4F8CFF]/5 px-4 py-2 text-sm font-medium text-[#4F8CFF]">
-            <FileText className="h-4 w-4" />
-            Article Editor
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-card px-4 py-1.5 label-uppercase text-primary">
+            <FileText className="h-3.5 w-3.5" />
+            Article editor
           </div>
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Write an{" "}
-            <span className="text-[#7DAAFF]">
-              Article
-            </span>
-          </h1>
-          <p className="mt-3 text-lg text-muted-foreground">
-            Share AI news, tutorials, research, and insights with the community.
+          <h1 className="display-lg text-ink">Write an article</h1>
+          <p className="mt-4 text-lg text-body">
+            Share AI news, tutorials, research, and insights with the
+            community.
           </p>
         </motion.div>
 
@@ -100,35 +93,41 @@ export default function CreateArticleForm() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             {/* Title */}
             <div className="space-y-2">
-              <Label htmlFor="title" className="text-base font-semibold">Title</Label>
+              <Label htmlFor="title" className="text-base font-semibold">
+                Title
+              </Label>
               <Input
                 id="title"
                 placeholder="Enter article title..."
-                className="h-12 text-lg"
+                className="h-12 border-hairline-strong bg-surface-card text-lg focus-visible:border-primary focus-visible:ring-primary/20"
                 {...register("title")}
               />
               {errors.title && (
-                <p className="text-sm text-red-500">{errors.title.message}</p>
+                <p className="text-sm text-destructive">
+                  {errors.title.message}
+                </p>
               )}
             </div>
 
             {/* Summary */}
             <div className="space-y-2">
-              <Label htmlFor="summary" className="text-base font-semibold">Summary</Label>
+              <Label htmlFor="summary" className="text-base font-semibold">
+                Summary
+              </Label>
               <Textarea
                 id="summary"
                 rows={3}
                 placeholder="Write a short summary..."
-                className="resize-none text-base"
+                className="resize-none border-hairline-strong bg-surface-card text-base focus-visible:border-primary focus-visible:ring-primary/20"
                 {...register("summary")}
               />
               {errors.summary && (
-                <p className="text-sm text-red-500">
+                <p className="text-sm text-destructive">
                   {errors.summary.message}
                 </p>
               )}
@@ -137,12 +136,12 @@ export default function CreateArticleForm() {
             {/* Meta row */}
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label>Category</Label>
+                <Label className="text-base font-semibold">Category</Label>
                 <select
                   id="category"
                   {...register("category_id")}
                   disabled={categoriesLoading}
-                  className="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm transition focus:border-[#4F8CFF] focus:ring-2 focus:ring-[#4F8CFF]/20 focus:outline-none"
+                  className="h-12 w-full rounded-lg border border-hairline-strong bg-surface-card px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
                 >
                   <option value="">
                     {categoriesLoading
@@ -156,22 +155,24 @@ export default function CreateArticleForm() {
                   ))}
                 </select>
                 {errors.category_id && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-destructive">
                     {errors.category_id.message}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label>Cover Image URL</Label>
+                <Label className="text-base font-semibold">
+                  Cover image URL
+                </Label>
                 <Input
                   id="cover_image"
                   placeholder="https://example.com/image.jpg"
-                  className="h-12"
+                  className="h-12 border-hairline-strong bg-surface-card focus-visible:border-primary focus-visible:ring-primary/20"
                   {...register("cover_image")}
                 />
                 {errors.cover_image && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-destructive">
                     {errors.cover_image.message}
                   </p>
                 )}
@@ -179,7 +180,7 @@ export default function CreateArticleForm() {
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+            <div className="h-px bg-hairline" />
 
             {/* Content Editor */}
             <div className="space-y-2">
@@ -193,7 +194,7 @@ export default function CreateArticleForm() {
                 }
               />
               {errors.content && (
-                <p className="text-sm text-red-500">
+                <p className="text-sm text-destructive">
                   {errors.content.message}
                 </p>
               )}
@@ -211,7 +212,7 @@ export default function CreateArticleForm() {
                 ) : (
                   <span className="flex items-center gap-2">
                     <Send className="h-4 w-4" />
-                    Publish Article
+                    Publish article
                   </span>
                 )}
               </Button>

@@ -37,10 +37,10 @@ const ToolButton = ({
     onClick={onClick}
     disabled={disabled}
     className={cn(
-      "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+      "flex h-8 w-8 items-center justify-center rounded-md transition-colors",
       isActive
-        ? "bg-[#4F8CFF]/10 text-[#4F8CFF]"
-        : "text-muted-foreground hover:bg-gray-100 hover:text-foreground",
+        ? "bg-surface-strong text-ink"
+        : "text-body hover:bg-muted hover:text-ink",
       disabled && "cursor-not-allowed opacity-40",
     )}
   >
@@ -50,7 +50,7 @@ const ToolButton = ({
 
 export default function EditorToolbar({ editor }: Props) {
   return (
-    <div className="flex flex-wrap items-center gap-1 border-b border-gray-100 px-4 py-2">
+    <div className="flex flex-wrap items-center gap-1 border-b border-hairline px-4 py-2">
       <ToolButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         isActive={editor.isActive("bold")}
@@ -72,7 +72,7 @@ export default function EditorToolbar({ editor }: Props) {
         <Strikethrough className="h-4 w-4" />
       </ToolButton>
 
-      <div className="mx-1 h-5 w-px bg-gray-200" />
+      <div className="mx-1 h-5 w-px bg-hairline" />
 
       <ToolButton
         onClick={() =>
@@ -92,7 +92,7 @@ export default function EditorToolbar({ editor }: Props) {
         <Heading2 className="h-4 w-4" />
       </ToolButton>
 
-      <div className="mx-1 h-5 w-px bg-gray-200" />
+      <div className="mx-1 h-5 w-px bg-hairline" />
 
       <ToolButton
         onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -108,7 +108,7 @@ export default function EditorToolbar({ editor }: Props) {
         <ListOrdered className="h-4 w-4" />
       </ToolButton>
 
-      <div className="mx-1 h-5 w-px bg-gray-200" />
+      <div className="mx-1 h-5 w-px bg-hairline" />
 
       <ToolButton
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
@@ -130,7 +130,7 @@ export default function EditorToolbar({ editor }: Props) {
         <Minus className="h-4 w-4" />
       </ToolButton>
 
-      <div className="mx-1 h-5 w-px bg-gray-200" />
+      <div className="mx-1 h-5 w-px bg-hairline" />
 
       <ToolButton
         onClick={() => editor.chain().focus().undo().run()}

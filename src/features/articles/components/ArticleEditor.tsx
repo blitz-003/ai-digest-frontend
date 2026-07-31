@@ -19,7 +19,7 @@ export default function ArticleEditor({ value, onChange }: Props) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-lg max-w-none focus:outline-none min-h-[400px] px-8 py-6 text-foreground",
+          "prose max-w-none min-w-0 focus:outline-none min-h-[400px] px-8 py-6",
       },
     },
   });
@@ -29,9 +29,9 @@ export default function ArticleEditor({ value, onChange }: Props) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow focus-within:shadow-md focus-within:ring-2 focus-within:ring-[#4F8CFF]/10">
+    <div className="overflow-hidden rounded-xl border border-hairline bg-surface-card transition-[border-color,box-shadow] focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/10">
       <EditorToolbar editor={editor} />
-      <div className="min-h-[400px]">
+      <div className="min-h-[400px] min-w-0 overflow-x-hidden">
         <EditorContent editor={editor} />
       </div>
     </div>

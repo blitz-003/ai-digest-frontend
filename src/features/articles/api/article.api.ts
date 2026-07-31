@@ -2,7 +2,14 @@ import api from "@/lib/axios";
 
 import { Article, CreateArticlePayload, UpdateArticlePayload } from "../types";
 
-export async function getArticles(params?: any) {
+export interface ArticleQueryParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  category_id?: string;
+}
+
+export async function getArticles(params?: ArticleQueryParams) {
   const response = await api.get<Article[]>("/articles", { params });
 
   return response.data;

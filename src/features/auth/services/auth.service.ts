@@ -2,8 +2,6 @@ import api from "@/lib/axios";
 import { API } from "@/constants/api";
 
 import type {
-  AuthResponse,
-  RegisterRequest,
   User,
   LoginResponse,
   RegisterResponse,

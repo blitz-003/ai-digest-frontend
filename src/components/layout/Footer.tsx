@@ -3,15 +3,15 @@ import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-gradient-to-b from-white via-gray-50/50 to-white">
-      <div className="container mx-auto px-4 py-14">
+    <footer className="border-t border-hairline bg-canvas">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">
-              <span className="text-[#C084FC]">AI Digest</span>
+            <h2 className="text-xl font-medium tracking-tight text-primary">
+              AI Digest
             </h2>
-            <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
+            <p className="mt-4 max-w-xs text-sm leading-6 text-body">
               Your source for artificial intelligence news, research, startups,
               and tools.
             </p>
@@ -19,22 +19,22 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="text-sm font-semibold">Explore</h3>
-            <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
-              <Link className="transition hover:text-foreground" href="/">
+            <h3 className="label-uppercase text-body">Explore</h3>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-body">
+              <Link className="transition hover:text-ink" href="/">
                 Home
               </Link>
               <Link
-                className="transition hover:text-foreground"
+                className="transition hover:text-ink"
                 href="/articles"
               >
                 Articles
               </Link>
-              <Link className="transition hover:text-foreground" href="/about">
+              <Link className="transition hover:text-ink" href="/about">
                 About
               </Link>
               <Link
-                className="transition hover:text-foreground"
+                className="transition hover:text-ink"
                 href="/pricing"
               >
                 Pricing
@@ -44,23 +44,23 @@ export default function Footer() {
 
           {/* Topics */}
           <div>
-            <h3 className="text-sm font-semibold">Topics</h3>
-            <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+            <h3 className="label-uppercase text-body">Topics</h3>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-body">
               <Link
                 href="/articles?category=ai-startups"
-                className="transition hover:text-foreground"
+                className="transition hover:text-ink"
               >
                 AI Startups
               </Link>
               <Link
                 href="/articles?category=ai-tools"
-                className="transition hover:text-foreground"
+                className="transition hover:text-ink"
               >
                 AI Tools
               </Link>
               <Link
                 href="/articles?category=research-papers"
-                className="transition hover:text-foreground"
+                className="transition hover:text-ink"
               >
                 Research
               </Link>
@@ -69,23 +69,23 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold">Follow AI Digest</h3>
+            <h3 className="label-uppercase text-body">Follow AI Digest</h3>
             <div className="mt-5 flex gap-3">
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-surface-card text-body transition hover:border-hairline-strong hover:text-ink"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-surface-card text-body transition hover:border-hairline-strong hover:text-ink"
               >
                 <FaXTwitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-surface-card text-body transition hover:border-hairline-strong hover:text-ink"
               >
                 <FaLinkedin className="h-5 w-5" />
               </a>
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t pt-6 text-sm text-muted-foreground md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-hairline pt-6 text-sm text-body md:flex-row">
           <p>
             &copy; {new Date().getFullYear()} AI Digest. All rights reserved.
           </p>

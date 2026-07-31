@@ -15,13 +15,21 @@ export const useCreateArticle = () => {
     mutationFn: createArticle,
 
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ["articles"],
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: ["articles"],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ["dashboard-articles"],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ["dashboard-stats"],
+        }),
+      ]);
 
       toast.success("Article published!");
 
-      router.push("/articles");
+      router.push("/dashboard");
     },
 
     onError: (error) => {

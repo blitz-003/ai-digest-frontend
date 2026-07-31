@@ -10,6 +10,8 @@ export const createArticleSchema = z.object({
   cover_image: z.string().optional().or(z.literal("")),
 
   category_id: z.string().min(1, "Please select a category"),
+
+  status: z.enum(["draft", "published", "archived"]).optional(),
 });
 
 export type CreateArticleSchema = z.infer<typeof createArticleSchema>;

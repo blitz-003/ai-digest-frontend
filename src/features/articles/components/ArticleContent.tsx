@@ -51,25 +51,25 @@ export default function ArticleContent() {
     categories?.find((c) => c.id === categoryId)?.name ?? "";
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50/50 to-white">
+    <main className="min-h-screen bg-canvas">
       {/* Header */}
-      <div className="border-b bg-white">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex items-center gap-3 mb-2">
-            <Newspaper className="h-6 w-6 text-[#4F8CFF]" />
-            <h1 className="text-4xl font-bold tracking-tight">News Feed</h1>
+      <div className="border-b border-hairline bg-canvas">
+        <div className="container mx-auto px-4 py-16">
+          <p className="label-uppercase text-primary">The feed</p>
+          <div className="mt-3 flex items-center gap-3">
+            <h1 className="display-lg text-ink">Latest from AI Digest</h1>
           </div>
-          <p className="text-muted-foreground text-lg">
+          <p className="mt-4 text-lg text-body">
             Explore the latest AI news, research, and insights.
           </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-10">
         {/* Filters */}
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-center">
           <div className="relative flex-1 md:max-w-md">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-body" />
             <input
               value={search}
               onChange={(e) => {
@@ -77,19 +77,19 @@ export default function ArticleContent() {
                 setPage(1);
               }}
               placeholder="Search articles..."
-              className="h-11 w-full rounded-xl border border-gray-200 bg-white pl-10 pr-4 text-sm outline-none transition focus:border-[#4F8CFF] focus:ring-2 focus:ring-[#4F8CFF]/20"
+              className="h-11 w-full rounded-lg border border-hairline-strong bg-surface-card pl-10 pr-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
 
           <div className="relative">
-            <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-body" />
             <select
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
                 setPage(1);
               }}
-              className="h-11 appearance-none rounded-xl border border-gray-200 bg-white pl-10 pr-10 text-sm outline-none transition focus:border-[#4F8CFF] focus:ring-2 focus:ring-[#4F8CFF]/20"
+              className="h-11 appearance-none rounded-lg border border-hairline-strong bg-surface-card pl-10 pr-10 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="">All Categories</option>
               {categories?.map((item) => (
@@ -105,7 +105,10 @@ export default function ArticleContent() {
         {isLoading ? (
           <div className="space-y-6">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-48 animate-pulse rounded-2xl bg-gray-100" />
+              <div
+                key={i}
+                className="h-48 animate-pulse rounded-xl bg-surface-strong"
+              />
             ))}
           </div>
         ) : articles && articles.length > 0 ? (
@@ -119,10 +122,10 @@ export default function ArticleContent() {
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-gray-100 bg-white py-20 text-center">
-            <Newspaper className="mx-auto mb-3 h-12 w-12 opacity-20" />
-            <p className="text-lg font-medium">No articles found</p>
-            <p className="mt-1 text-sm text-muted-foreground">
+          <div className="rounded-xl border border-hairline bg-surface-card py-20 text-center">
+            <Newspaper className="mx-auto mb-3 h-12 w-12 text-body" />
+            <p className="text-lg font-medium text-ink">No articles found</p>
+            <p className="mt-1 text-sm text-body">
               Try adjusting your search or filters.
             </p>
           </div>
@@ -130,21 +133,19 @@ export default function ArticleContent() {
 
         {/* Pagination */}
         {articles && articles.length > 0 && (
-          <div className="mt-10 flex items-center justify-center gap-4">
+          <div className="mt-12 flex items-center justify-center gap-4">
             <button
               disabled={page === 1}
               onClick={() => setPage(page - 1)}
-              className="h-10 rounded-xl border border-gray-200 bg-white px-5 text-sm font-medium transition hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="h-10 rounded-lg border border-hairline-strong bg-surface-card px-5 text-sm font-medium transition hover:bg-canvas-soft disabled:cursor-not-allowed disabled:opacity-40"
             >
               Previous
             </button>
-            <span className="text-sm text-muted-foreground">
-              Page {page}
-            </span>
+            <span className="text-sm text-body">Page {page}</span>
             <button
               disabled={!articles || articles.length < 10}
               onClick={() => setPage(page + 1)}
-              className="h-10 rounded-xl border border-gray-200 bg-white px-5 text-sm font-medium transition hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="h-10 rounded-lg border border-hairline-strong bg-surface-card px-5 text-sm font-medium transition hover:bg-canvas-soft disabled:cursor-not-allowed disabled:opacity-40"
             >
               Next
             </button>

@@ -3,12 +3,16 @@ import "./globals.css";
 
 import Providers from "./providers";
 import Navbar from "@/components/layout/Navbar";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/layout/Footer";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   title: "AI Digest",
@@ -21,7 +25,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html
+      lang="en"
+      className={cn("font-sans", inter.variable, jetbrainsMono.variable)}
+    >
       <body>
         <Providers>
           <Navbar />

@@ -25,7 +25,7 @@ export default function ArticlePage() {
   )?.name;
 
   const date = article
-    ? new Date(article.created_at).toLocaleDateString(undefined, {
+    ? new Date(article.created_at).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -34,13 +34,13 @@ export default function ArticlePage() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-canvas">
         <div className="container mx-auto px-4 py-12">
           <div className="mx-auto max-w-3xl space-y-6">
-            <div className="h-6 w-32 animate-pulse rounded bg-gray-200" />
-            <div className="h-10 w-3/4 animate-pulse rounded bg-gray-200" />
-            <div className="h-4 w-48 animate-pulse rounded bg-gray-200" />
-            <div className="h-80 animate-pulse rounded-2xl bg-gray-100" />
+            <div className="h-6 w-32 animate-pulse rounded bg-surface-strong" />
+            <div className="h-10 w-3/4 animate-pulse rounded bg-surface-strong" />
+            <div className="h-4 w-48 animate-pulse rounded bg-surface-strong" />
+            <div className="h-80 animate-pulse rounded-xl bg-surface-strong" />
           </div>
         </div>
       </main>
@@ -49,12 +49,14 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-canvas">
         <div className="container mx-auto px-4 py-20 text-center">
-          <h1 className="text-3xl font-bold">Article not found</h1>
+          <h1 className="text-3xl font-normal tracking-tight text-ink">
+            Article not found
+          </h1>
           <Link
             href="/articles"
-            className="mt-4 inline-flex items-center gap-2 text-[#4F8CFF] hover:underline"
+            className="mt-4 inline-flex items-center gap-2 text-ink underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to articles
@@ -65,27 +67,28 @@ export default function ArticlePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Cover image */}
-      {article.cover_image && (
-        <div className="relative h-72 w-full overflow-hidden md:h-96">
-          <Image
-            src={article.cover_image}
-            alt={article.title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        </div>
-      )}
+    <main className="min-h-screen overflow-x-hidden bg-canvas">
+      <div className="container mx-auto min-w-0 px-4 py-10">
+        <article className="mx-auto min-w-0 max-w-3xl">
+          {/* Cover image */}
+          {article.cover_image ? (
+            <div className="relative mb-10 h-72 w-full overflow-hidden rounded-xl md:h-96">
+              <Image
+                src={article.cover_image}
+                alt={article.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          ) : (
+            <div className="mb-10 h-72 w-full rounded-xl bg-linear-to-br from-primary to-canvas md:h-96" />
+          )}
 
-      <div className="container mx-auto px-4 py-10">
-        <article className="mx-auto max-w-3xl">
           {/* Back link */}
           <Link
             href="/articles"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+            className="mb-8 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors hover:text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             All articles
@@ -93,25 +96,25 @@ export default function ArticlePage() {
 
           {/* Category */}
           {categoryName && (
-            <div className="mt-6 mb-4">
-              <span className="inline-block rounded-full bg-[#7DAAFF]/10 px-3 py-1 text-xs font-medium text-[#7DAAFF]">
+            <div className="mb-4 mt-6">
+              <span className="inline-block rounded-full bg-surface-strong px-3 py-1 label-uppercase text-primary">
                 {categoryName}
               </span>
             </div>
           )}
 
           {/* Title */}
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
+          <h1 className="text-4xl font-normal leading-tight tracking-tight text-ink md:text-5xl">
             {article.title}
           </h1>
 
           {/* Summary */}
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 text-lg leading-relaxed text-body">
             {article.summary}
           </p>
 
           {/* Meta bar */}
-          <div className="mt-6 flex flex-wrap items-center gap-5 border-b border-gray-100 pb-6 text-sm text-muted-foreground">
+          <div className="mt-8 flex flex-wrap items-center gap-5 border-b border-hairline pb-6 text-sm text-primary">
             <span className="flex items-center gap-1.5">
               <CalendarDays className="h-4 w-4" />
               {date}
@@ -125,10 +128,16 @@ export default function ArticlePage() {
               {article.view_count} views
             </span>
             <div className="ml-auto flex items-center gap-3">
-              <button className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 transition hover:bg-gray-50">
+              <button
+                aria-label="Bookmark"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-hairline transition hover:bg-canvas-soft"
+              >
                 <Bookmark className="h-4 w-4" />
               </button>
-              <button className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 transition hover:bg-gray-50">
+              <button
+                aria-label="Share"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-hairline transition hover:bg-canvas-soft"
+              >
                 <Share2 className="h-4 w-4" />
               </button>
             </div>
@@ -136,15 +145,15 @@ export default function ArticlePage() {
 
           {/* Content */}
           <div
-            className="prose prose-lg prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[#4F8CFF] prose-img:rounded-2xl max-w-none py-8"
+            className="prose max-w-none overflow-x-hidden py-8"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
           {/* Bottom nav */}
-          <div className="border-t border-gray-100 pt-8">
+          <div className="border-t border-hairline pt-8">
             <Link
               href="/articles"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#4F8CFF] transition-colors hover:gap-3"
+              className="inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:gap-3 hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to all articles
